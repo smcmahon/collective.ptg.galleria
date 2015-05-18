@@ -48,17 +48,17 @@ class IGalleriaDisplaySettings(IBaseSettings):
         title=_(u'galleria_label_galleria_height', default="Height of gallery"),
         description=_(u'galleria_galleria_height',
             default="Height in pixels"),
-        default=300) 
+        default=300)
     galleria_imagenav = schema.Bool(
         title=_(u'galleria_label_imagenav', default="Enable Imagenav"),
         description=_(u'galleria_imagenav',
             default="enable the next and previous button"),
-        default=True) 
+        default=True)
     galleria_thumbnails = schema.Bool(
         title=_(u'galleria_label_thumbnails', default="Enable Thumbnails"),
         description=_(u'galleria_thumbnails',
             default="enable the thumbnails at bottom"),
-        default=True)      
+        default=True)
     galleria_lightbox = schema.Bool(
         title=_(u'galleria_label_lightbox', default="Enable lightbox"),
         description=_(u'galleria_lightbox',
@@ -68,22 +68,22 @@ class IGalleriaDisplaySettings(IBaseSettings):
         title=_(u'galleria_carousel', default="Enable carousel"),
         description=_(u'galleria_carousel',
             default="enable carousel for thumbnails (you want this ON)"),
-        default=True)  
+        default=True)
     galleria_carousel_steps = schema.Int(
         title=_(u'galleria_carousel_steps', default="Carousel steps"),
         description=_(u'Carousel steps',
             default="Defines how many 'steps' the carousel should take on each nav click."),
-        default=1)  
+        default=1)
     galleria_zoom = schema.Bool(
         title=_(u'galleria_zoom', default="Enable CSS3 zooming (kind of ken burns effect) "),
         description=_(u'galleria_zoom',
             default="Enables ken burns zoom effect for modern browsers"),
-        default=False)   
+        default=False)
     galleria_responsive = schema.Bool(
         title=_(u'galleria_responsive', default="Resposive mode"),
         description=_(u'galleria_responsive',
             default="this setting is only useful if your theme is responsive"),
-        default=False)    
+        default=False)
     galleria_history = schema.Bool(
         title=_(u'galleria_history', default="Enable history plugin"),
         description=_(u'galleria_history',
@@ -118,7 +118,7 @@ class GalleriaDisplayType(BaseDisplayType):
         zoomsheet = ' '
         if self.settings.galleria_zoom:
             zoomsheet = """<link rel="stylesheet" type="text/css"
-                         href="++resource++ptg.galleria/zoom.css" />""" 
+                         href="++resource++ptg.galleria/zoom.css" />"""
         return u"""
 <link rel="stylesheet" type="text/css"
     href="%(portal_url)s/%(css_file)s" />
@@ -135,7 +135,7 @@ class GalleriaDisplayType(BaseDisplayType):
     src="%(portal_url)s/++resource++ptg.galleria/galleria.js"></script>
 <script type="text/javascript"
     src="%(portal_url)s/%(js_file)s"></script>
-<script type="text/javascript">
+<script type="text/javascript" id="ptg_custom">
 (function($){
 $(document).ready(function() {
     // Initialize Galleria
@@ -186,5 +186,5 @@ $(document).ready(function() {
         return """%s (<a class="download" href="%s">Download</a>)""" %(
             img['description'],
             img.get('download_url', img.get('image_url')))
-            
+
 GalleriaSettings = createSettingsFactory(GalleriaDisplayType.schema)
