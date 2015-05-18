@@ -135,7 +135,7 @@ class GalleriaDisplayType(BaseDisplayType):
     src="%(portal_url)s/++resource++ptg.galleria/galleria.js"></script>
 <script type="text/javascript"
     src="%(portal_url)s/%(js_file)s"></script>
-<script type="text/javascript">
+<script type="text/javascript" id="ptg_custom">
 (function($){
 $(document).ready(function() {
     // Initialize Galleria
